@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A year on GitHub — Saksham Srivastava (Saksham653)</title>
+<meta name="description" content="Saksham Srivastava's last year on GitHub, day by day: contributions, active days, streaks and the busiest days, as a small city you can explore.">
+<link rel="canonical" href="https://saksham653.github.io/year/">
+<meta name="author" content="Saksham Srivastava">
+<meta property="og:title" content="A year on GitHub — Saksham Srivastava">
+<meta property="og:description" content="Every day of the last year as a block in a small city. Hover a day, pick a month, replay the year.">
+<meta property="og:image" content="https://saksham653.github.io/og.jpg">
+<meta name="theme-color" content="#f6f6f4" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0b0b0c" media="(prefers-color-scheme: dark)">
+<style>
+  :root { --paper: #f6f6f4; --ink: #111113; --soft: #5f5f66; --hair: #e2e2de; --raised: #ffffff; --accent: #2b50ff; --flat: #e6e6e1; --tip: #111113; --tipink: #f6f6f4; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --paper: #0b0b0c; --ink: #ededea; --soft: #9a9aa0; --hair: #242427; --raised: #141416; --accent: #7389ff; --flat: #19191c; --tip: #ededea; --tipink: #0b0b0c; } }
+  :root[data-theme="dark"] { --paper: #0b0b0c; --ink: #ededea; --soft: #9a9aa0; --hair: #242427; --raised: #141416; --accent: #7389ff; --flat: #19191c; --tip: #ededea; --tipink: #0b0b0c; }
+  * { box-sizing: border-box; margin: 0; }
+  body { background: var(--paper); color: var(--ink); font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  a { color: inherit; text-underline-offset: 3px; text-decoration-color: var(--hair); }
+  a:hover { text-decoration-color: var(--ink); }
+  button { font: inherit; color: inherit; cursor: pointer; }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 6px; }
+  .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+  main { max-width: 1160px; margin: 0 auto; padding: 32px 16px 64px; }
+  .top { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .crumb { font-size: 14px; color: var(--soft); }
+  .crumb a { color: var(--ink); font-weight: 600; }
+  .pill { border: 1px solid var(--hair); background: var(--raised); border-radius: 999px; padding: 6px 14px; font-size: 13px; }
+  h1 { margin-top: 28px; font-size: clamp(32px, 6vw, 56px); line-height: 1; letter-spacing: -.035em; }
+  h1 em { font-style: normal; color: var(--accent); }
+  .sub { margin-top: 10px; color: var(--soft); font-size: 15px; }
+  .live { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); margin-right: 8px; animation: blink 2s ease-in-out infinite; vertical-align: middle; }
+  @keyframes blink { 50% { opacity: .25; } }
+  .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-top: 28px; }
+  .tile { border: 1px solid var(--hair); background: var(--raised); border-radius: 14px; padding: 14px 16px; }
+  .tile b { display: block; font-size: 30px; font-weight: 650; letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
+  .tile span { font-size: 12.5px; color: var(--soft); }
+  .bar { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 32px; }
+  .seg { display: inline-flex; border: 1px solid var(--hair); border-radius: 999px; padding: 3px; background: var(--raised); }
+  .seg button { border: 0; background: none; padding: 6px 14px; border-radius: 999px; font-size: 14px; color: var(--soft); }
+  .seg button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+  .play { border: 1px solid var(--hair); background: var(--raised); border-radius: 999px; padding: 7px 16px; font-size: 14px; }
+  .months { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 14px; }
+  .months button { border: 1px solid var(--hair); background: var(--raised); border-radius: 999px; padding: 4px 11px; font-size: 13px; color: var(--soft); }
+  .months button[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); }
+  .stage { position: relative; margin-top: 14px; border: 1px solid var(--hair); background: var(--raised); border-radius: 18px; overflow: hidden; }
+  .stage svg { display: block; width: 100%; height: auto; }
+  .note { min-height: 26px; margin-top: 12px; font-size: 14px; color: var(--soft); }
+  .note b { color: var(--ink); }
+  .blk { cursor: pointer; transition: transform .18s ease, opacity .25s ease; transform-box: fill-box; }
+  .blk:hover, .blk.on { transform: translateY(-8px); }
+  .blk.dim { opacity: .14; }
+  .blk.hidden { opacity: 0; transform: translateY(14px); }
+  .cell { cursor: pointer; transition: opacity .25s ease; }
+  .cell.dim { opacity: .14; }
+  .cell:hover { stroke: var(--ink); stroke-width: 1.5; }
+  .tip { position: fixed; pointer-events: none; background: var(--tip); color: var(--tipink); font-size: 13px; padding: 7px 10px; border-radius: 8px; white-space: nowrap; transform: translate(-50%, calc(-100% - 12px)); opacity: 0; transition: opacity .12s; z-index: 2; }
+  .tip b { font-weight: 650; }
+  .charts { display: grid; grid-template-columns: 1fr 1.6fr; gap: 14px; margin-top: 28px; }
+  .panel { border: 1px solid var(--hair); background: var(--raised); border-radius: 18px; padding: 18px; }
+  .panel h2 { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--soft); font-weight: 600; }
+  .bars { display: flex; align-items: flex-end; gap: 6px; height: 150px; margin-top: 16px; }
+  .bars div { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px; height: 100%; justify-content: flex-end; }
+  .bars i { display: block; width: 100%; background: var(--accent); border-radius: 5px 5px 2px 2px; min-height: 2px; opacity: .85; transition: opacity .15s, height .8s cubic-bezier(.2,.8,.2,1); }
+  .bars div:hover i { opacity: 1; }
+  .bars small { font-size: 11px; color: var(--soft); }
+  footer { margin-top: 40px; padding-top: 16px; border-top: 1px solid var(--hair); color: var(--soft); font-size: 14px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  @media (max-width: 720px) { .charts { grid-template-columns: 1fr; } }
+  @media (prefers-reduced-motion: reduce) { .blk, .cell, .bars i, .live { transition: none; animation: none; } }
+</style>
+</head>
+<body>
+<main>
+  <div class="top">
+    <p class="crumb"><a href="https://saksham653.github.io/">Saksham Srivastava</a> · <a href="https://github.com/Saksham653">github.com/Saksham653</a></p>
+    <button class="pill" id="theme" type="button" aria-label="Switch light and dark">◐ Theme</button>
+  </div>
+  <h1>A year on <em>GitHub</em></h1>
+  <p class="sub"><span class="live" aria-hidden="true"></span><span id="updated">Every day of the last year, as a small city.</span> Hover a day, pick a month, or replay the year.</p>
+
+  <div class="tiles" id="tiles"></div>
+
+  <div class="bar">
+    <div class="seg" role="group" aria-label="View">
+      <button type="button" data-view="city" aria-pressed="true">City</button>
+      <button type="button" data-view="grid" aria-pressed="false">Grid</button>
+    </div>
+    <button class="play" id="replay" type="button">▶ Replay the year</button>
+  </div>
+  <div class="months" id="months" role="group" aria-label="Month"></div>
+  <div class="stage" id="stage"></div>
+  <div class="tip" id="tip" role="tooltip"></div>
+  <p class="note" id="note" aria-live="polite"></p>
+
+  <div class="charts">
+    <section class="panel"><h2>Week rhythm</h2><div class="bars" id="weekdays"></div></section>
+    <section class="panel"><h2>Month by month</h2><div class="bars" id="monthbars"></div></section>
+  </div>
+
+  <footer><span>Redrawn every morning from GitHub's contribution calendar.</span><span><a href="https://saksham.sqaron.dev/">saksham.sqaron.dev</a> · <a href="https://github.com/Saksham653">GitHub</a></span></footer>
+</main>
+
+<script type="application/json" id="snapshot">{"login":"Saksham653","updated":"2026-11-28","followers":7,"publicRepos":16,"stars":30,"total":1674,"active":177,"longest":33,"current":0,"busiest":{"date":"2026-10-06","count":112},"days":[["2025-11-23",0],["2025-11-24",0],["2025-11-25",0],["2025-11-26",0],["2025-11-27",0],["2025-11-28",0],["2025-11-29",0],["2025-11-30",0],["2025-12-01",0],["2025-12-02",0],["2025-12-03",0],["2025-12-04",0],["2025-12-05",0],["2025-12-06",0],["2025-12-07",0],["2025-12-08",0],["2025-12-09",0],["2025-12-10",0],["2025-12-11",0],["2025-12-12",0],["2025-12-13",0],["2025-12-14",0],["2025-12-15",0],["2025-12-16",0],["2025-12-17",0],["2025-12-18",0],["2025-12-19",0],["2025-12-20",0],["2025-12-21",0],["2025-12-22",0],["2025-12-23",0],["2025-12-24",0],["2025-12-25",0],["2025-12-26",0],["2025-12-27",0],["2025-12-28",0],["2025-12-29",0],["2025-12-30",0],["2025-12-31",0],["2026-01-01",0],["2026-01-02",0],["2026-01-03",0],["2026-01-04",0],["2026-01-05",0],["2026-01-06",0],["2026-01-07",0],["2026-01-08",0],["2026-01-09",0],["2026-01-10",0],["2026-01-11",0],["2026-01-12",0],["2026-01-13",0],["2026-01-14",0],["2026-01-15",0],["2026-01-16",0],["2026-01-17",0],["2026-01-18",0],["2026-01-19",0],["2026-01-20",0],["2026-01-21",0],["2026-01-22",0],["2026-01-23",0],["2026-01-24",0],["2026-01-25",0],["2026-01-26",0],["2026-01-27",0],["2026-01-28",0],["2026-01-29",0],["2026-01-30",0],["2026-01-31",0],["2026-02-01",0],["2026-02-02",0],["2026-02-03",0],["2026-02-04",0],["2026-02-05",0],["2026-02-06",0],["2026-02-07",0],["2026-02-08",0],["2026-02-09",0],["2026-02-10",0],["2026-02-11",0],["2026-02-12",0],["2026-02-13",0],["2026-02-14",0],["2026-02-15",0],["2026-02-16",0],["2026-02-17",0],["2026-02-18",0],["2026-02-19",0],["2026-02-20",0],["2026-02-21",0],["2026-02-22",0],["2026-02-23",0],["2026-02-24",0],["2026-02-25",0],["2026-02-26",0],["2026-02-27",0],["2026-02-28",1],["2026-03-01",5],["2026-03-02",5],["2026-03-03",4],["2026-03-04",9],["2026-03-05",20],["2026-03-06",8],["2026-03-07",4],["2026-03-08",8],["2026-03-09",1],["2026-03-10",0],["2026-03-11",0],["2026-03-12",0],["2026-03-13",0],["2026-03-14",0],["2026-03-15",0],["2026-03-16",0],["2026-03-17",0],["2026-03-18",0],["2026-03-19",0],["2026-03-20",1],["2026-03-21",0],["2026-03-22",0],["2026-03-23",0],["2026-03-24",0],["2026-03-25",0],["2026-03-26",0],["2026-03-27",0],["2026-03-28",0],["2026-03-29",0],["2026-03-30",0],["2026-03-31",0],["2026-04-01",0],["2026-04-02",0],["2026-04-03",0],["2026-04-04",0],["2026-04-05",0],["2026-04-06",4],["2026-04-07",0],["2026-04-08",0],["2026-04-09",0],["2026-04-10",0],["2026-04-11",0],["2026-04-12",0],["2026-04-13",0],["2026-04-14",0],["2026-04-15",0],["2026-04-16",0],["2026-04-17",0],["2026-04-18",0],["2026-04-19",0],["2026-04-20",0],["2026-04-21",0],["2026-04-22",0],["2026-04-23",0],["2026-04-24",0],["2026-04-25",0],["2026-04-26",0],["2026-04-27",0],["2026-04-28",0],["2026-04-29",0],["2026-04-30",0],["2026-05-01",0],["2026-05-02",0],["2026-05-03",0],["2026-05-04",0],["2026-05-05",0],["2026-05-06",0],["2026-05-07",0],["2026-05-08",0],["2026-05-09",0],["2026-05-10",0],["2026-05-11",0],["2026-05-12",0],["2026-05-13",0],["2026-05-14",0],["2026-05-15",0],["2026-05-16",0],["2026-05-17",0],["2026-05-18",0],["2026-05-19",0],["2026-05-20",0],["2026-05-21",0],["2026-05-22",0],["2026-05-23",0],["2026-05-24",0],["2026-05-25",0],["2026-05-26",0],["2026-05-27",0],["2026-05-28",0],["2026-05-29",10],["2026-05-30",22],["2026-05-31",15],["2026-06-01",13],["2026-06-02",3],["2026-06-03",6],["2026-06-04",5],["2026-06-05",4],["2026-06-06",7],["2026-06-07",0],["2026-06-08",6],["2026-06-09",1],["2026-06-10",8],["2026-06-11",4],["2026-06-12",0],["2026-06-13",7],["2026-06-14",5],["2026-06-15",9],["2026-06-16",9],["2026-06-17",5],["2026-06-18",0],["2026-06-19",4],["2026-06-20",5],["2026-06-21",0],["2026-06-22",10],["2026-06-23",5],["2026-06-24",4],["2026-06-25",6],["2026-06-26",13],["2026-06-27",7],["2026-06-28",3],["2026-06-29",7],["2026-06-30",7],["2026-07-01",15],["2026-07-02",10],["2026-07-03",11],["2026-07-04",16],["2026-07-05",11],["2026-07-06",7],["2026-07-07",11],["2026-07-08",3],["2026-07-09",5],["2026-07-10",2],["2026-07-11",4],["2026-07-12",1],["2026-07-13",7],["2026-07-14",4],["2026-07-15",10],["2026-07-16",5],["2026-07-17",4],["2026-07-18",12],["2026-07-19",1],["2026-07-20",4],["2026-07-21",9],["2026-07-22",8],["2026-07-23",3],["2026-07-24",7],["2026-07-25",0],["2026-07-26",0],["2026-07-27",1],["2026-07-28",9],["2026-07-29",5],["2026-07-30",9],["2026-07-31",11],["2026-08-01",12],["2026-08-02",4],["2026-08-03",11],["2026-08-04",14],["2026-08-05",21],["2026-08-06",17],["2026-08-07",7],["2026-08-08",2],["2026-08-09",1],["2026-08-10",15],["2026-08-11",28],["2026-08-12",9],["2026-08-13",13],["2026-08-14",13],["2026-08-15",1],["2026-08-16",0],["2026-08-17",8],["2026-08-18",5],["2026-08-19",7],["2026-08-20",16],["2026-08-21",5],["2026-08-22",10],["2026-08-23",12],["2026-08-24",11],["2026-08-25",9],["2026-08-26",11],["2026-08-27",12],["2026-08-28",1],["2026-08-29",13],["2026-08-30",12],["2026-08-31",25],["2026-09-01",7],["2026-09-02",2],["2026-09-03",7],["2026-09-04",1],["2026-09-05",7],["2026-09-06",3],["2026-09-07",6],["2026-09-08",11],["2026-09-09",13],["2026-09-10",13],["2026-09-11",12],["2026-09-12",5],["2026-09-13",0],["2026-09-14",13],["2026-09-15",23],["2026-09-16",28],["2026-09-17",16],["2026-09-18",21],["2026-09-19",18],["2026-09-20",6],["2026-09-21",7],["2026-09-22",11],["2026-09-23",6],["2026-09-24",8],["2026-09-25",1],["2026-09-26",4],["2026-09-27",8],["2026-09-28",8],["2026-09-29",5],["2026-09-30",2],["2026-10-01",12],["2026-10-02",0],["2026-10-03",6],["2026-10-04",3],["2026-10-05",18],["2026-10-06",112],["2026-10-07",3],["2026-10-08",3],["2026-10-09",12],["2026-10-10",3],["2026-10-11",0],["2026-10-12",10],["2026-10-13",1],["2026-10-14",0],["2026-10-15",4],["2026-10-16",7],["2026-10-17",17],["2026-10-18",1],["2026-10-19",0],["2026-10-20",3],["2026-10-21",17],["2026-10-22",5],["2026-10-23",6],["2026-10-24",0],["2026-10-25",3],["2026-10-26",11],["2026-10-27",7],["2026-10-28",5],["2026-10-29",42],["2026-10-30",5],["2026-10-31",4],["2026-11-01",0],["2026-11-02",3],["2026-11-03",12],["2026-11-04",2],["2026-11-05",6],["2026-11-06",2],["2026-11-07",0],["2026-11-08",0],["2026-11-09",2],["2026-11-10",0],["2026-11-11",2],["2026-11-12",11],["2026-11-13",16],["2026-11-14",15],["2026-11-15",1],["2026-11-16",5],["2026-11-17",5],["2026-11-18",2],["2026-11-19",8],["2026-11-20",4],["2026-11-21",6],["2026-11-22",6],["2026-11-23",2],["2026-11-24",86],["2026-11-25",54],["2026-11-26",22],["2026-11-27",0],["2026-11-28",0]]}</script>
+<script>
+(() => {
+  const DATA_URL = 'https://raw.githubusercontent.com/Saksham653/Saksham653/main/assets/year.json';
+  const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  const WEEKDAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  const NS = 'http://www.w3.org/2000/svg';
+  const $ = (id) => document.getElementById(id);
+  const fmt = (n) => n.toLocaleString('en-US');
+  const long = (iso) => new Date(iso + 'T00:00:00Z').toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric', timeZone: 'UTC' });
+  const short = (iso) => new Date(iso + 'T00:00:00Z').toLocaleDateString('en-GB', { day: 'numeric', month: 'short', timeZone: 'UTC' });
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let data, days, view = 'city', month = null, pinned = null;
+
+  // ---- theme: follows the system, with a manual switch remembered on this device
+  const root = document.documentElement;
+  try { const t = localStorage.getItem('year-theme'); if (t) root.dataset.theme = t; } catch {}
+  const isDark = () => root.dataset.theme ? root.dataset.theme === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+  $('theme').onclick = () => {
+    root.dataset.theme = isDark() ? 'light' : 'dark';
+    try { localStorage.setItem('year-theme', root.dataset.theme); } catch {}
+    draw();
+  };
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => { if (!root.dataset.theme) draw(); });
+  const palette = () => isDark()
+    ? { lo: [62, 72, 128], hi: [126, 146, 255], flat: '#19191c', win: '#ffe6a3' }
+    : { lo: [205, 211, 238], hi: [43, 80, 255], flat: '#e6e6e1', win: '#ffffff' };
+  const mix = (a, b, t) => a.map((v, i) => Math.round(v + (b[i] - v) * t));
+  const rgb = (c, k = 1) => `rgb(${c.map((v) => Math.round(v * k)).join(',')})`;
+
+  function el(tag, attrs = {}, parent) {
+    const e = document.createElementNS(NS, tag);
+    for (const [k, v] of Object.entries(attrs)) e.setAttribute(k, v);
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+
+  // ---- numbers that count up
+  function countUp(node, value) {
+    if (reduce) { node.textContent = fmt(value); return; }
+    const t0 = performance.now(), dur = 900;
+    const step = (now) => {
+      const p = Math.min(1, (now - t0) / dur);
+      node.textContent = fmt(Math.round(value * (1 - (1 - p) ** 3)));
+      if (p < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }
+
+  function tiles() {
+    const items = [
+      [data.followers, 'followers'], [data.total, 'contributions'], [data.active, 'active days'],
+      data.current >= 2 ? [data.current, 'day streak now'] : null, [data.longest, 'day longest streak'], [data.publicRepos, 'public repos'], [data.stars, 'stars earned'],
+    ].filter(Boolean);
+    $('tiles').innerHTML = items.map(([, l]) => `<div class="tile"><b>0</b><span>${l}</span></div>`).join('');
+    [...$('tiles').querySelectorAll('b')].forEach((b, i) => countUp(b, items[i][0]));
+    $('updated').textContent = `Live · updated ${short(data.updated)}. ${fmt(data.total)} contributions on ${data.active} days.`;
+  }
+
+  // ---- the tooltip and the note under the stage
+  const tip = $('tip');
+  function showTip(d, evt) {
+    tip.innerHTML = `<b>${fmt(d.n)}</b> contribution${d.n === 1 ? '' : 's'} · ${long(d.date)}`;
+    tip.style.left = `${evt.clientX}px`;
+    tip.style.top = `${evt.clientY}px`;
+    tip.style.opacity = 1;
+  }
+  const hideTip = () => { tip.style.opacity = 0; };
+  function rankOf(d) {
+    const higher = days.filter((x) => x.n > d.n).length;
+    return d.n ? (higher === 0 ? 'the busiest day of the year' : `busier than ${Math.round(100 * (days.length - higher - 1) / days.length)}% of days`) : 'a quiet day';
+  }
+  function note() {
+    if (pinned) {
+      $('note').innerHTML = `<b>${long(pinned.date)}</b>: ${fmt(pinned.n)} contribution${pinned.n === 1 ? '' : 's'}, ${rankOf(pinned)}. <a href="#" id="unpin">Clear</a>`;
+      $('unpin').onclick = (e) => { e.preventDefault(); pinned = null; draw(); };
+    } else if (month) {
+      const ds = days.filter((d) => d.date.startsWith(month));
+      const sum = ds.reduce((s, d) => s + d.n, 0), on = ds.filter((d) => d.n).length;
+      const best = ds.reduce((a, d) => (d.n > a.n ? d : a), ds[0]);
+      $('note').innerHTML = `<b>${MONTHS[+month.slice(5) - 1]} ${month.slice(0, 4)}</b>: ${fmt(sum)} contributions on ${on} days${best.n ? `, busiest ${short(best.date)} with ${best.n}` : ''}.`;
+    } else {
+      $('note').innerHTML = `Busiest day: <b>${short(data.busiest.date)}</b> with ${fmt(data.busiest.count)} contributions. Click any day to pin it.`;
+    }
+  }
+  const inMonth = (d) => !month || d.date.startsWith(month);
+
+  // ---- the city: one block per day, as tall as the day's contributions
+  function city(rising) {
+    const U = 19.2, V = [5.2, -6.6], BW = 15.4, BD = 0.78, X0 = 40, Y0 = 300, HMAX = 160, W = 1150, H = 330;
+    const pal = palette(), max = Math.max(1, ...days.map((d) => d.n));
+    const svg = el('svg', { viewBox: `0 0 ${W} ${H}`, role: 'img', 'aria-label': 'The year as a city, one block a day' });
+    const order = [...days].sort((a, b) => b.wd - a.wd || a.wk - b.wk);
+    const blocks = [];
+    for (const d of order) {
+      const ox = X0 + d.wk * U + d.wd * V[0], oy = Y0 + d.wd * V[1];
+      const A = [ox, oy], B = [ox + BW, oy], C = [ox + BW + V[0] * BD, oy + V[1] * BD], D = [ox + V[0] * BD, oy + V[1] * BD];
+      const h = d.n ? 5 + (HMAX - 5) * Math.log1p(d.n) / Math.log1p(max) : 0;
+      const up = ([x, y]) => [x, y - h], P = (list) => list.map((p) => p.map((v) => v.toFixed(1)).join(',')).join(' ');
+      const g = el('g', { class: 'blk', tabindex: '-1' }, svg);
+      if (!d.n) el('polygon', { points: P([A, B, C, D]), fill: pal.flat }, g);
+      else {
+        const k = Math.log1p(d.n) / Math.log1p(max), c = mix(pal.lo, pal.hi, Math.min(1, k * k * 1.25));
+        el('polygon', { points: P([A, B, up(B), up(A)]), fill: rgb(c, 0.78) }, g);
+        el('polygon', { points: P([B, C, up(C), up(B)]), fill: rgb(c, 0.6) }, g);
+        el('polygon', { points: P([up(A), up(B), up(C), up(D)]), fill: pinned === d ? 'var(--ink)' : rgb(c) }, g);
+        if (h > 30) for (let wy = A[1] - h + 7; wy < A[1] - 6; wy += 7) for (const wx of [A[0] + 3.4, A[0] + 9.4]) {
+          if (((d.wk * 7 + d.wd) * 31 + Math.round(wy) * 7 + Math.round(wx)) % 10 < 3) el('rect', { x: wx, y: wy, width: 2.6, height: 2.4, fill: pal.win, opacity: 0.6 }, g);
+        }
+      }
+      if (!inMonth(d)) g.classList.add('dim');
+      if (pinned === d) g.classList.add('on');
+      g.addEventListener('mousemove', (e) => showTip(d, e));
+      g.addEventListener('mouseleave', hideTip);
+      g.addEventListener('click', () => { pinned = pinned === d ? null : d; draw(); });
+      blocks.push([d, g]);
+    }
+    // months along the front
+    days.filter((d) => d.date.endsWith('-01')).forEach((d) => {
+      const t = el('text', { x: X0 + d.wk * U, y: Y0 + 22, class: 'mono', 'font-size': 12, fill: 'currentColor', opacity: 0.6 }, svg);
+      t.textContent = MONTHS[+d.date.slice(5, 7) - 1];
+    });
+    $('stage').querySelector('svg')?.remove();
+    $('stage').appendChild(svg);
+    if (rising) replay(blocks.map(([d, g]) => [d, g]));
+  }
+
+  // ---- the grid: the familiar calendar, one square a day
+  function grid() {
+    const S = 17, G = 4, X0 = 44, Y0 = 26, W = X0 + 53 * (S + G) + 10, H = Y0 + 7 * (S + G) + 30;
+    const pal = palette(), max = Math.max(1, ...days.map((d) => d.n));
+    const svg = el('svg', { viewBox: `0 0 ${W} ${H}`, role: 'img', 'aria-label': 'The year as a calendar grid' });
+    for (const d of days) {
+      const k = d.n ? Math.log1p(d.n) / Math.log1p(max) : 0;
+      const r = el('rect', { x: X0 + d.wk * (S + G), y: Y0 + d.wd * (S + G), width: S, height: S, rx: 4, class: 'cell', fill: d.n ? rgb(mix(pal.lo, pal.hi, Math.min(1, 0.15 + k))) : pal.flat }, svg);
+      if (!inMonth(d)) r.classList.add('dim');
+      if (pinned === d) r.setAttribute('stroke', 'var(--ink)'), r.setAttribute('stroke-width', 2);
+      r.addEventListener('mousemove', (e) => showTip(d, e));
+      r.addEventListener('mouseleave', hideTip);
+      r.addEventListener('click', () => { pinned = pinned === d ? null : d; draw(); });
+    }
+    ['Mon', 'Wed', 'Fri'].forEach((w) => {
+      const t = el('text', { x: 0, y: Y0 + WEEKDAYS.indexOf(w) * (S + G) + 13, class: 'mono', 'font-size': 11, fill: 'currentColor', opacity: 0.6 }, svg);
+      t.textContent = w;
+    });
+    days.filter((d) => d.date.endsWith('-01')).forEach((d) => {
+      const t = el('text', { x: X0 + d.wk * (S + G), y: 14, class: 'mono', 'font-size': 11, fill: 'currentColor', opacity: 0.6 }, svg);
+      t.textContent = MONTHS[+d.date.slice(5, 7) - 1];
+    });
+    $('stage').querySelector('svg')?.remove();
+    $('stage').appendChild(svg);
+  }
+
+  // ---- replay: the year builds itself again, week by week, with the date running
+  let playing = 0;
+  function replay(blocks) {
+    if (reduce) return;
+    const run = ++playing, weeks = Math.max(...days.map((d) => d.wk)) + 1, t0 = performance.now(), per = 70;
+    blocks.forEach(([, g]) => g.classList.add('hidden'));
+    $('replay').textContent = '■ Playing…';
+    const step = (now) => {
+      if (run !== playing) return;
+      const wk = Math.floor((now - t0) / per);
+      blocks.forEach(([d, g]) => { if (d.wk <= wk) g.classList.remove('hidden'); });
+      const shown = days.filter((d) => d.wk <= wk);
+      const last = shown[shown.length - 1];
+      if (last) $('note').innerHTML = `<b>${short(last.date)}</b> · ${fmt(shown.reduce((s, d) => s + d.n, 0))} contributions so far`;
+      if (wk < weeks) requestAnimationFrame(step);
+      else { $('replay').textContent = '▶ Replay the year'; note(); }
+    };
+    requestAnimationFrame(step);
+  }
+  $('replay').onclick = () => { if (view !== 'city') setView('city'); pinned = null; month = null; monthsBar(); draw(true); };
+
+  // ---- months to filter by, and the two small charts
+  function monthsBar() {
+    const keys = [...new Set(days.map((d) => d.date.slice(0, 7)))];
+    $('months').innerHTML = `<button type="button" data-m="" aria-pressed="${!month}">All</button>`
+      + keys.map((k, i) => `<button type="button" data-m="${k}" aria-pressed="${month === k}">${MONTHS[+k.slice(5) - 1]}${i === 0 || k.slice(5) === '01' ? ` ’${k.slice(2, 4)}` : ''}</button>`).join('');
+    $('months').querySelectorAll('button').forEach((b) => (b.onclick = () => { month = b.dataset.m || null; pinned = null; monthsBar(); draw(); }));
+  }
+  function bars(id, rows) {
+    const max = Math.max(1, ...rows.map((r) => r[1]));
+    $(id).innerHTML = rows.map(([l, v, title]) => `<div title="${title}"><i style="height:0"></i><small>${l}</small></div>`).join('');
+    requestAnimationFrame(() => $(id).querySelectorAll('i').forEach((i, j) => (i.style.height = `${Math.max(2, 100 * rows[j][1] / max) * 0.82}%`)));
+  }
+  function charts() {
+    const wd = WEEKDAYS.map((w, i) => { const v = days.filter((d) => d.wd === i).reduce((s, d) => s + d.n, 0); return [w, v, `${w}: ${fmt(v)} contributions`]; });
+    bars('weekdays', wd);
+    const keys = [...new Set(days.map((d) => d.date.slice(0, 7)))];
+    bars('monthbars', keys.map((k) => { const v = days.filter((d) => d.date.startsWith(k)).reduce((s, d) => s + d.n, 0); const m = MONTHS[+k.slice(5) - 1]; return [m, v, `${m} ${k.slice(0, 4)}: ${fmt(v)} contributions`]; }));
+  }
+
+  function setView(v) {
+    view = v;
+    document.querySelectorAll('[data-view]').forEach((b) => b.setAttribute('aria-pressed', b.dataset.view === v));
+    draw();
+  }
+  document.querySelectorAll('[data-view]').forEach((b) => (b.onclick = () => setView(b.dataset.view)));
+  function draw(rising = false) { hideTip(); (view === 'city' ? city(rising) : grid()); note(); }
+
+  // ---- data: today's file from the profile repo, or the copy baked into this page
+  function start(json) {
+    data = json;
+    const first = new Date(json.days[0][0] + 'T00:00:00Z');
+    days = json.days.map(([date, n]) => {
+      const dt = new Date(date + 'T00:00:00Z');
+      return { date, n, wd: dt.getUTCDay(), wk: Math.floor((dt - first) / 864e5 + first.getUTCDay()) / 7 | 0 };
+    });
+    tiles(); monthsBar(); charts(); draw(true);
+  }
+  const snapshot = JSON.parse($('snapshot').textContent);
+  fetch(DATA_URL, { cache: 'no-store' }).then((r) => (r.ok ? r.json() : Promise.reject(r.status))).then(start).catch(() => start(snapshot));
+})();
+</script>
+</body>
+</html>
